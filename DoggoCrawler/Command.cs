@@ -32,6 +32,7 @@ static class Command
     static GameState Quit(GameState state)
     {
         state.Quit = true;
+        state.LatestUpdate = new PlayerQuit();
         return state;
     }
 
@@ -57,7 +58,7 @@ static class Command
     {
         if (state.PlayerRoom.Items.TryPop(out var item))
         {
-            state.PlayerRoom.Items.Push(item);
+            state.PlayerItems.Push(item);
             var pickUpHistory = new Pickup();
             state.History.Push(pickUpHistory);
             state.LatestUpdate = new ValidPickUp();

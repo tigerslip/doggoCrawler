@@ -4,6 +4,21 @@ internal static class DungeonBuilder
 {
     internal static GameState BuildDungeon()
     {
-        return new GameState();
+        // sure you could build a dungeon generator but it's getting late
+        var room1 = new Room();
+        var room2 = new Room();
+        var room3 = new Room();
+        var room4 = new Room();
+
+        // connect rooms
+        room1.EastRoom = room2;
+        room2.SouthRoom = room3;
+        room3.WestRoom = room4;
+        room4.NorthRoom = room1;
+
+        room4.Items.Push(new MoneyItem(25));
+        room2.Items.Push(new WeaponItem(100));
+        
+        return new GameState(room1);
     }
 }

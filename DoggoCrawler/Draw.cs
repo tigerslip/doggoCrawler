@@ -58,4 +58,42 @@ internal static class Draw
                 throw new ArgumentOutOfRangeException(nameof(state.LatestUpdate));
         }
     }
+
+    internal static void PrintHelp()
+    {
+        Console.WriteLine("Lets get it started");
+        Console.WriteLine("Here are the controls");
+        foreach (var command in Enum.GetValues<PlayerCommand>())
+        {
+            switch (command)
+            {
+                case PlayerCommand.Unknown:
+                    break;
+                case PlayerCommand.MoveNorth:
+                    Console.WriteLine("Press n to move north");
+                    break;
+                case PlayerCommand.MoveSouth:
+                    Console.WriteLine("Press s to move south");
+                    break;
+                case PlayerCommand.MoveEast:
+                    Console.WriteLine("Press e to move east");
+                    break;
+                case PlayerCommand.MoveWest:
+                    Console.WriteLine("Press w to move west");
+                    break;
+                case PlayerCommand.PickUp:
+                    Console.WriteLine("Press p to pick up an item in the room");
+                    break;
+                case PlayerCommand.Drop:
+                    Console.WriteLine("Press d to drop your last item (DO NOT DO THIS)");
+                    break;
+                case PlayerCommand.Undo:
+                    Console.WriteLine("Press u to undo");
+                    break;
+                case PlayerCommand.Quit:
+                    Console.WriteLine("Press q to quit");
+                    break;
+            }
+        }
+    }
 }

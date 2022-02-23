@@ -15,14 +15,12 @@ using System.Diagnostics;
 using System.Windows.Input;using CommandLine;
 using DoggoCrawler;
 
+Draw.PrintHelp();
 var state = DungeonBuilder.BuildDungeon();
 
 while (!state.Quit)
 {
-    var input = Console.ReadKey().KeyChar;
+    var input = Console.ReadKey(true).KeyChar;
     Command.Process(Command.Parse(input), state);
     Draw.Update(state);
 }
-
-Console.WriteLine("Press any key to exit....");
-Console.ReadKey();

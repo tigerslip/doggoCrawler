@@ -37,10 +37,15 @@ record Drop : IHistoryEntry;
 
 class GameState
 {
+    public GameState(Room startingRoom)
+    {
+        PlayerRoom = startingRoom;
+    }
+
     internal Room PlayerRoom { get; set; }
     internal bool Quit { get; set; }
-    internal Stack<IHistoryEntry> History { get; set; }
-    public Stack<IItem> PlayerItems { get; set; }
+    internal Stack<IHistoryEntry> History { get; set; } = new();
+    public Stack<IItem> PlayerItems { get; set; } = new();
     public IGameUpdate LatestUpdate { get; set; }
 }
 
