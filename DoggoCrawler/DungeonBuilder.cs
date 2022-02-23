@@ -12,9 +12,16 @@ internal static class DungeonBuilder
 
         // connect rooms
         room1.EastRoom = room2;
+        room2.WestRoom = room1;
+
         room2.SouthRoom = room3;
+        room3.NorthRoom = room2;
+
         room3.WestRoom = room4;
+        room4.EastRoom = room3;
+
         room4.NorthRoom = room1;
+        room1.SouthRoom = room4;
 
         room4.Items.Push(new MoneyItem(25));
         room2.Items.Push(new WeaponItem(100));
